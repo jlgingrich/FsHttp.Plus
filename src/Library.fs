@@ -33,3 +33,10 @@ module Response =
     // Decodes the response with a Thoth.Json decoder
     let decode decoder response =
         Decode.fromString decoder (Response.toText response)
+
+module Result =
+    // Gets the value associated with the option. Throws when the argument is Error
+    let assertOk r =
+        match r with
+        | Ok r' -> r'
+        | Error e -> failwithf "Assertion failed: %s" e
