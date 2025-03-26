@@ -3,6 +3,13 @@
 open FsHttp
 open Thoth.Json.Net
 
+module Option =
+    let getOrFail err opt =
+        match opt with
+        | Some v -> v
+        | None -> failwith err
+
+
 type QueryParams = List<string * string>
 
 module Query =
