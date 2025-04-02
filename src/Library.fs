@@ -46,4 +46,4 @@ module Result =
     let assertOk r =
         match r with
         | Ok r' -> r'
-        | Error e -> failwithf "Assertion failed: %s" e
+        | Error e -> failwithf "Assertion failed: %A" e
