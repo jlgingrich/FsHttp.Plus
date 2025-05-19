@@ -2,6 +2,7 @@
 
 open FsHttp
 open Thoth.Json.Net
+open FSharp.Data
 
 module Option =
     let getOrFail err opt =
@@ -40,6 +41,9 @@ module Response =
     // Decodes the response with a Thoth.Json decoder
     let decode decoder response =
         Decode.fromString decoder (Response.toText response)
+
+    let toHtml = Response.toStream >> HtmlDocument.Load >> _.Html()
+
 
 module Result =
     // Gets the value associated with the option. Throws when the argument is Error
